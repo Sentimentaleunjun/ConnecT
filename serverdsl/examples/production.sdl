@@ -1,0 +1,22 @@
+app "web_main" {
+    runtime flask
+    entrypoint "app.py"
+    network {
+        domain "example.com"
+        port auto
+        ssl auto
+    }
+    env {
+        DB_HOST "localhost"
+        SECRET_KEY "secret"
+    }
+}
+
+database "main_db" {
+    engine mysql
+    env {
+        USER "root"
+        PASSWORD "password"
+        DATABASE "appdb"
+    }
+}
